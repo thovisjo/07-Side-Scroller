@@ -18,6 +18,7 @@ class Sound:
 	def add_sound(self,label,sound):
 		'''
 		Adds a sound to the sound_library dictionary. Assumes the sound is in the mp3 folder
+		Pygame (version 2.9 at least) doesn't support 32-bit float WAVs. If you have trouble with a WAV file, you will need to choose another one or recode it
 		'''
 		self.sound_library[label] = pygame.mixer.Sound(os.path.join('mp3', sound))
 	

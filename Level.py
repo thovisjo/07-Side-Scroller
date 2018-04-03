@@ -1,14 +1,16 @@
 import pygame
 from Color import Color
+from itertools import repeat
 
 class Level:
 	def __init__(self,filename):
 		self.block_size = (self.w,self.h) = (100,100)
 		self.level = []
-		self.screen_player_offset = (100,400)
+		self.screen_player_offset = (100,300)
 		self.player_position = (0,0)
 		self.enemies = []
 		self.floor = []
+		self.screen_shake = False
 		f = open(filename,'r')
 		for l in f:
 			self.level.append(l)
@@ -49,6 +51,10 @@ class Level:
 		return self.screen
 	
 	def get_rect(self,dim,player):
+		'''
+		Return the portion of the level where the player is currently visible
+		
+		'''
 		(ox,oy) = self.screen_player_offset
 		(px,py) = player.get_position()
 		(dx,dy) = dim
@@ -65,29 +71,17 @@ class Level:
 		rect = pygame.Rect(rx,ry,dx,dy)
 		return rect
 
-	def get_color(self,game_object):
-		if game_object == '0':
-			return Color.gray_2
-		if game_object == '1':
-			return Color.gray_1
-		if game_object == 'P':
-			return Color.green_5
-		if game_object == 'E':
-			return Color.red_5
-		return Color.black
-	
-	def generate_empty_level(self,dimensions,block_size):
-		(i,j) = dimensions
-		(w,h) = block_size
-		for k in range(j//h):
-			temp = ''
-			for l in range(i//w):
-				temp += '0'
-			print(temp)
-		temp = ''
-		for l in range(i//w):
-			temp += '1'
-		print(temp)
+	def shake(self):
+		s = -1
+		for _ in range(0, 3):
+			for x in range(0, 30, 10):
+				yield (x*s, 0)
+			for x in range(30, 0, 10):
+				yield (x*s, 0)
+			s *= -1
+		while True:
+			yield (0, 0)
+
 
 class Floor(pygame.sprite.Sprite):
 	def __init__(self,gravity,position,size):
