@@ -10,6 +10,7 @@ class Level:
 		self.player_position = (0,0)
 		self.enemies = []
 		self.floor = []
+		self.goal = []
 		self.screen_shake = False
 		f = open(filename,'r')
 		for l in f:
@@ -26,8 +27,11 @@ class Level:
 						self.player_position = pos
 					if c == 'E':
 						self.enemies.append(pos)
+					if c == 'G':
+                                                self.goal.append(pos)
 					if c == '1':
 						self.floor.append(pos)
+					
 					i += 1
 				j += 1
 		self.rect = self.screen.get_rect()
@@ -46,6 +50,9 @@ class Level:
 	
 	def get_floor(self):
 		return self.floor
+
+	def get_goal(self):
+                return self.goal
 		
 	def get_screen(self):
 		return self.screen
@@ -81,6 +88,22 @@ class Level:
 			s *= -1
 		while True:
 			yield (0, 0)
+
+class Goal(pygame.sprite.Sprite):
+        def __init__(self,position,size):
+                pygame.sprite.Sprite.__init__(self)
+                self.image = pygame.Surface(size)
+                self.image.fill(Color.yellow_7)
+                self.rect = self.image.get_rect()
+                (self.rect.x,self.rect.y) = position
+
+        def get_position(self):
+                return(self.rect.x,self.rect.y)
+
+        def update(self):
+                '''
+                update behavior
+                '''
 
 
 class Floor(pygame.sprite.Sprite):

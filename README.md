@@ -1,28 +1,15 @@
 # 07-Side-Scroller
+This is a side scroller! I really enjoyed this assignment. Everything made sense, and came together easily. I like the blocks well-enough to keep them and instead focus on the enemies killing and implementing a goal - a golden block - that progresses the player onto the next level. I tried to implement a jumping noise, but for some reason it wouldn't load, even after converting it to an mp3 file. I did implement a cool tune though!
 
-Let's build a 2D side-scroller! I have given you some files to start playing with, mostly a culmination of exercises and other resources we have explored throughout the semester.
+In the future, I might come back to this and:
+* Add more sound effects and music tracks that fit
+* More closely integrate the music and the game, ie make colors change on a certain beat
+* Add more levels
+* Make enemies move!!!!!
+* Add sprites
+* Figure out how to display lives ( I know vaguely how to do it, but theres a lot of cross-class stuff right now)
 
-The Level Class can import a (rudimentary) level file to populate the level. An example can be found in level_1.game. Feel free to alter or expand the file format.
 
-Feel free to use any appropriately-licensed sprites, graphics, music, or sounds (or make your own). Any game should have a goal and opportunities for mastery.
+Music is found: http://freemusicarchive.org/music/Skweee_Perry/
 
-There is a lot still to do, but I hope you have fun with this. Hopefully, you have developed the skills and the tools to make this an enjoyable, creative assignment.
-
-To turn in the assignment, submit the URL to your GitHub repository.
-
----
-
-The grading criteria will be as follows:
-
-* [1 point] Assignment turned in on time
-* [1] Repository contains an appropriate software license
-* [2] Repository contains a descriptive README.md
-* [1] Requires Python 3
-* [1] Appropriately calls pygame.init() and pygame.quit()
-* [1] Uses clock.tick() within the game loop
-* [1] No syntax errors
-* [2] No other runtime errors
-* [8] Accomplishes the objective of the assignment
-* [2] Adds interesting features (beyond the scope of the assignment)
-
-20 points total
+Attempted jump sound effect found: https://freesound.org/people/IanStarGem/sounds/274775/
